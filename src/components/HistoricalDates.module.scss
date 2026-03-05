@@ -1,0 +1,254 @@
+.historicalDates {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 80px;
+  min-height: 600px;
+  font-family: "PT Sans", sans-serif;
+  border-left: 1px solid rgba(66, 86, 122, 0.1);
+  border-right: 1px solid rgba(66, 86, 122, 0.1);
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+}
+
+.title {
+  position: relative;
+  max-width: 400px;
+  margin: 0 0 60px;
+  font-size: 56px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #42567a;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -80px;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, #3877ee 0%, #ef5da8 100%);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 36px;
+    margin-bottom: 40px;
+
+    &::before {
+      left: -20px;
+    }
+  }
+}
+
+.circleContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 80px 0 40px;
+
+  @media (max-width: 768px) {
+    margin: 40px 0;
+  }
+}
+
+.circle {
+  position: relative;
+  width: 530px;
+  height: 530px;
+  border: 1px solid rgba(66, 86, 122, 0.2);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+.circlePoint {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  background: #42567a;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  transition:
+    transform 0.3s,
+    background-color 0.3s;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  &.active {
+    background: #f4f5f9;
+    color: #42567a;
+    border-color: #42567a;
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+  }
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+
+    &.active {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+.yearDisplay {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  font-size: 120px;
+  font-weight: 700;
+  line-height: 1;
+  z-index: 3;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    font-size: 60px;
+    top: 32%;
+    left: 50%;
+    gap: 30px;
+  }
+}
+
+.startYear {
+  color: #3877ee;
+}
+
+.endYear {
+  color: #ef5da8;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.navButton {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(66, 86, 122, 0.5);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  font-size: 24px;
+  color: #42567a;
+  transition: background-color 0.3s;
+
+  &:hover:not(:disabled) {
+    background: rgba(66, 86, 122, 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.pagination {
+  font-size: 16px;
+  color: #42567a;
+}
+
+.sliderContainer {
+  margin-top: 40px;
+  padding: 20px 0;
+  position: relative;
+
+  :global {
+    .swiper {
+      padding: 0 40px;
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
+  }
+}
+
+.eventCard {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  min-height: 150px;
+
+  .eventYear {
+    font-size: 20px;
+    font-weight: 700;
+    color: #3877ee;
+    margin-bottom: 10px;
+  }
+
+  .eventDescription {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #42567a;
+  }
+}
+
+.sliderButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(66, 86, 122, 0.3);
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #42567a;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background: rgba(66, 86, 122, 0.05);
+  }
+
+  &.prev {
+    left: 0;
+  }
+
+  &.next {
+    right: 0;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
